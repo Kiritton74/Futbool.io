@@ -1,0 +1,470 @@
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Футбол - Главная</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; background: #f5f5f5; }
+        .header { background: #006400; color: white; padding: 1rem; text-align: center; }
+        .nav { background: #333; display: flex; justify-content: center; flex-wrap: wrap; }
+        .nav a { color: white; padding: 1rem; text-decoration: none; }
+        .nav a:hover { background: #555; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .main-image { width: 100%; height: 400px; object-fit: cover; border-radius: 10px; margin-bottom: 2rem; }
+        .footer { background: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+        
+        .news-section { margin: 3rem 0; }
+        .section-title { 
+            color: #006400; 
+            margin-bottom: 1.5rem; 
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #006400;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .news-card.breaking {
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .news-card.transfer {
+            border-left: 4px solid #3498db;
+        }
+        
+        .news-card.tournament {
+            border-left: 4px solid #f39c12;
+        }
+        
+        .news-header {
+            display: flex;
+            justify-content: between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+        
+        .news-category {
+            background: #006400;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .breaking-news { background: #e74c3c; }
+        .transfer-news { background: #3498db; }
+        .tournament-news { background: #f39c12; }
+        
+        .news-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .news-title {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .player-of-month {
+            background: linear-gradient(135deg, #006400, #008000);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .player-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .player-stats {
+            text-align: left;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            padding: 0.8rem;
+            border-radius: 5px;
+        }
+        
+        .tournament-table {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .table th {
+            background: #006400;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        .table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .position-1 { background: #d4edda; }
+        .position-2 { background: #fff3cd; }
+        .position-3 { background: #ffeaa7; }
+        
+        .upcoming-matches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .match-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .teams {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem 0;
+        }
+        
+        .team { flex: 1; }
+        .vs { flex: 0.5; color: #666; font-weight: bold; }
+        
+        .match-time {
+            background: #006400;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+        
+        .highlight-video {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            height: 300px;
+            background: #2c3e50;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .player-content { flex-direction: column; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Мир Футбола 2025</h1>
+        <p>Актуальные новости, трансферы и события футбольного мира</p>
+    </div>
+    
+    <div class="nav">
+        <a href="index.html">Главная</a>
+        <a href="history.html">История</a>
+        <a href="rules.html">Правила</a>
+        <a href="teams.html">Команды</a>
+        <a href="players.html">Игроки</a>
+    </div>
+
+    <div class="container">
+        <img src="https://avatars.mds.yandex.net/i?id=7332e71a55222cde36065a00e8da00773af15b51-4842773-images-thumbs&n=13" alt="Футбол 2025" class="main-image">
+        
+        <h2>Добро пожаловать в мир футбола 2025!</h2>
+        <p>Самые свежие новости, эксклюзивные интервью и полное освещение событий футбольного сезона 2024/2025.</p>
+        
+        <div class="news-section">
+            <h3 class="section-title">🔥 Главные новости</h3>
+            <div class="news-grid">
+                <div class="news-card breaking">
+                    <div class="news-header">
+                        <span class="news-category breaking-news">ЭКСКЛЮЗИВ</span>
+                        <span class="news-date">15 января 2025</span>
+                    </div>
+                    <h4 class="news-title">Мбаппе подписал контракт с Реалом до 2030 года</h4>
+                    <p>Килиан Мбаппе официально стал игроком Реала после завершения трансфера на рекордные €180 миллионов. Французский нападающий получил футболку с номером 9.</p>
+                </div>
+                
+                <div class="news-card tournament">
+                    <div class="news-header">
+                        <span class="news-category tournament-news">ЛИГА ЧЕМПИОНОВ</span>
+                        <span class="news-date">12 января 2025</span>
+                    </div>
+                    <h4 class="news-title">Новый формат Лиги Чемпионов: 36 команд в одной лиге</h4>
+                    <p>Сезон 2024/25 - первый с обновленным форматом. Команды сыграют 8 матчей против разных соперников в единой турнирной таблице.</p>
+                </div>
+                
+                <div class="news-card transfer">
+                    <div class="news-header">
+                        <span class="news-category transfer-news">ТРАНСФЕРЫ</span>
+                        <span class="news-date">10 января 2025</span>
+                    </div>
+                    <h4 class="news-title">Холанн продлил контракт с Ман Сити до 2028 года</h4>
+                    <p>Норвежский снайпер останется в "горожанах" с зарплатой €500 тысяч в неделю. Отклонены предложения от ПСЖ и Баварии.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="player-of-month">
+            <h3>⭐ Игрок месяца - Январь 2025</h3>
+            <h4>Джуд Беллингем (Реал Мадрид)</h4>
+            <div class="player-content">
+                <div class="player-info">
+                    <h5>Англия | Центральный полузащитник</h5>
+                    <p>22 года | 186 см</p>
+                </div>
+                <div class="player-stats">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <strong>Голы</strong>
+                            <div>8</div>
+                        </div>
+                        <div class="stat-item">
+                            <strong>Ассисты</strong>
+                            <div>5</div>
+                        </div>
+                        <div class="stat-item">
+                            <strong>Матчи</strong>
+                            <div>12</div>
+                        </div>
+                        <div class="stat-item">
+                            <strong>Рейтинг</strong>
+                            <div>8.9</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="news-section">
+            <h3 class="section-title">📊 Английская Премьер-лига - Турнирная таблица</h3>
+            <div class="tournament-table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Команда</th>
+                            <th>И</th>
+                            <th>В</th>
+                            <th>Н</th>
+                            <th>П</th>
+                            <th>О</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="position-1">
+                            <td>1</td>
+                            <td><strong>Манчестер Сити</strong></td>
+                            <td>20</td>
+                            <td>16</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td><strong>51</strong></td>
+                        </tr>
+                        <tr class="position-2">
+                            <td>2</td>
+                            <td><strong>Ливерпуль</strong></td>
+                            <td>20</td>
+                            <td>14</td>
+                            <td>4</td>
+                            <td>2</td>
+                            <td><strong>46</strong></td>
+                        </tr>
+                        <tr class="position-3">
+                            <td>3</td>
+                            <td><strong>Арсенал</strong></td>
+                            <td>20</td>
+                            <td>13</td>
+                            <td>5</td>
+                            <td>2</td>
+                            <td><strong>44</strong></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Астон Вилла</td>
+                            <td>20</td>
+                            <td>12</td>
+                            <td>3</td>
+                            <td>5</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Тоттенхэм</td>
+                            <td>20</td>
+                            <td>11</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>37</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="news-section">
+            <h3 class="section-title">📅 Ближайшие матчи</h3>
+            <div class="upcoming-matches">
+                <div class="match-card">
+                    <div class="teams">
+                        <div class="team">Реал Мадрид</div>
+                        <div class="vs">vs</div>
+                        <div class="team">Барселона</div>
+                    </div>
+                    <div>Эль Класико</div>
+                    <div class="match-time">18 января, 21:00</div>
+                </div>
+                
+                <div class="match-card">
+                    <div class="teams">
+                        <div class="team">Ман Сити</div>
+                        <div class="vs">vs</div>
+                        <div class="team">Ливерпуль</div>
+                    </div>
+                    <div>Английская Премьер-лига</div>
+                    <div class="match-time">20 января, 18:30</div>
+                </div>
+                
+                <div class="match-card">
+                    <div class="teams">
+                        <div class="team">Бавария</div>
+                        <div class="vs">vs</div>
+                        <div class="team">Боруссия Д</div>
+                    </div>
+                    <div>Дерби Германии</div>
+                    <div class="match-time">22 января, 20:30</div>
+                </div>
+            </div>
+        </div>
+
+      <div class="news-section">
+
+        <div class="news-section">
+            <h3 class="section-title">📰 Другие важные новости</h3>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-header">
+                        <span class="news-category">ТЕХНОЛОГИИ</span>
+                        <span class="news-date">8 января 2025</span>
+                    </div>
+                    <h4 class="news-title">ИИ-помощник судьи внедрен в Серии А</h4>
+                    <p>Новая система искусственного интеллекта помогает арбитрам определять офсайды с точностью до сантиметра.</p>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-header">
+                        <span class="news-category">МОЛОДЕЖЬ</span>
+                        <span class="news-date">5 января 2025</span>
+                    </div>
+                    <h4 class="news-title">16-летний вундеркинд из Бразилии дебютировал в Сантосе</h4>
+                    <p>Жоао Педро стал самым молодым игроком в истории клуба, выйдя на поле в возрасте 16 лет и 2 месяцев.</p>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-header">
+                        <span class="news-category">СТАТИСТИКА</span>
+                        <span class="news-date">3 января 2025</span>
+                    </div>
+                    <h4 class="news-title">Рекорд посещаемости в Премьер-лиге</h4>
+                    <p>Средняя посещаемость матчей АПЛ превысила 40,000 зрителей впервые в истории.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="news-section">
+            <h3 class="section-title">🏆 Трансферы зимы 2025</h3>
+            <div class="news-grid">
+                <div class="news-card transfer">
+                    <h4 class="news-title">Завершенные трансферы</h4>
+                    <ul>
+                        <li>Мбаппе → Реал (€180M)</li>
+                        <li>Гвардиола → Ювентус (свободный агент)</li>
+                        <li>Осимхен → Челси (€120M)</li>
+                        <li>Де Йонг → ПСЖ (€80M)</li>
+                    </ul>
+                </div>
+                
+                <div class="news-card transfer">
+                    <h4 class="news-title">Слухи и переговоры</h4>
+                    <ul>
+                        <li>Салах → Аль-Хиляль (€200M)</li>
+                        <li>Беллингем → Ман Сити (€250M)</li>
+                        <li>Винисиус → Барселона (€180M)</li>
+                        <li>Мюллер → Интер Майами (свободный)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024-2025 Мир Футбола. Все права защищены.</p>
+        <p>Последнее обновление: 15 января 2025 года</p>
+    </div>
+</body>
+</html>

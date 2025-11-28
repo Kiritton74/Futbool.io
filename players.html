@@ -1,0 +1,337 @@
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Известные футболисты</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; background: #f5f5f5; }
+        .header { background: #006400; color: white; padding: 1rem; text-align: center; }
+        .nav { background: #333; display: flex; justify-content: center; flex-wrap: wrap; }
+        .nav a { color: white; padding: 1rem; text-decoration: none; }
+        .nav a:hover { background: #555; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .footer { background: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+        
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .player {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .player:hover {
+            transform: translateY(-5px);
+        }
+        
+        .player-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .player img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 1rem;
+            border: 3px solid #006400;
+        }
+        
+        .player-info h3 {
+            margin: 0;
+            color: #006400;
+        }
+        
+        .player-info p {
+            margin: 0.2rem 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .player-stats {
+            background: #f0f8f0;
+            padding: 0.8rem;
+            border-radius: 5px;
+            margin-top: 0.8rem;
+        }
+        
+        .achievements {
+            background: #e8f4e8;
+            padding: 0.8rem;
+            border-radius: 5px;
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+        }
+        
+        .era-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+        }
+        
+        .legend { background: #ffd700; }
+        .modern { background: #4ecdc4; }
+        .current { background: #45b7d1; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Легенды Футбола</h1>
+    </div>
+    
+    <div class="nav">
+        <a href="index.html">Главная</a>
+        <a href="history.html">История</a>
+        <a href="rules.html">Правила</a>
+        <a href="teams.html">Команды</a>
+        <a href="players.html">Игроки</a>
+    </div>
+
+    <div class="container">
+        <h2>Великие футболисты всех времен</h2>
+        <p>От легенд прошлого до звезд современности - знакомьтесь с лучшими из лучших!</p>
+        
+        <div class="players-grid">
+            
+            <!-- Легенды прошлого -->
+            <div class="player">
+                <div class="player-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=65d255b18d70f3589cb2748d461edd38c5db5f7c-5876206-images-thumbs&n=13" alt="Пеле">
+                    <div class="player-info">
+                        <h3>Пеле <span class="era-badge legend">Легенда</span></h3>
+                        <p>Бразилия | Нападающий</p>
+                        <p>1956-1977</p>
+                    </div>
+                </div>
+                <p>Единственный футболист, ставший трёхкратным чемпионом мира.</p>
+                <div class="player-stats">
+                    <strong>Статистика:</strong> 1281 гол в 1363 матчах
+                </div>
+                <div class="achievements">
+                    <strong>Достижения:</strong> 3×Чемпион мира, 2×Кубок Libertadores
+                </div>
+            </div>
+
+            <div class="player">
+                <div class="player-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=315ff84a7f0e9cf5e56139ead9edd654a94b55d0-9185386-images-thumbs&n=13" alt="Диего Марадона">
+                    <div class="player-info">
+                        <h3>Диего Марадона <span class="era-badge legend">Легенда</span></h3>
+                        <p>Аргентина | Нападающий</p>
+                        <p>1976-1997</p>
+                    </div>
+                </div>
+                <p>Автор "Гола века" и "Руки Бога" в одном матче.</p>
+                <div class="player-stats">
+                    <strong>Статистика:</strong> 312 голов за карьеру
+                </div>
+                <div class="achievements">
+                    <strong>Достижения:</strong> Чемпион мира 1986, Чемпион Италии с Наполи
+                </div>
+            </div>
+
+            <div class="player">
+                <div class="player-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=bc3ba7964f6c0cc3655f402c0b83b93a2b88d38b-5237892-images-thumbs&n=13" alt="Йохан Кройф">
+                    <div class="player-info">
+                        <h3>Йохан Кройф <span class="era-badge legend">Легенда</span></h3>
+                        <p>Нидерланды | Нападающий</p>
+                        <p>1964-1984</p>
+                    </div>
+                </div>
+                <p>Создатель философии "тотального футбола".</p>
+                <div class="player-stats">
+                    <strong>Статистика:</strong> 433 гола за карьеру
+                </div>
+                <div class="achievements">
+                    <strong>Достижения:</strong> 3×Золотой мяч, Чемпион Европы
+                </div>
+            </div>
+
+            <div class="player">
+                <div class="player-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=071cbcee2b465613e67263cc15d7710b3c3d8578-5221961-images-thumbs&n=13" alt="Франц Беккенбауэр">
+                    <div class="player-info">
+                        <h3>Франц Беккенбауэр <span class="era-badge legend">Легенда</span></h3>
+                        <p>Германия | Защитник</p>
+                        <p>1964-1983</p>
+                    </div>
+                </div>
+                <p>"Кайзер" - создатель амплуа либеро.</p>
+                <div class="player-stats">
+                    <strong>Статистика:</strong> 111 голов за карьеру
+                </div>
+                <div class="achievements">
+                    <strong>Достижения:</strong> Чемпион мира и Европы, 3×Кубок Чемпионов
+                </div>
+            </div>
+
+            <!-- Современные легенды -->
+            <div class="player">
+                <div class="player-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg/150px-Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg" alt="Лионель Месси">
+                    <div class="player-info">
+                        <h3>Лионель Месси <span class="era-badge modern">Современность</span></h3>
+                        <p>Аргентина | Нападающий</p>
+                        <p>2003-н.в.</p>
+                    </div>
+                </div>
+                <p>Рекордсмен по количеству "Золотых мячей" (8).</p>
+                <div class="player-stats">
+                    <strong>Статистика:</strong> 800+ голов, 350+ ассистов
+                </div>
+                <div class="achievements">
+                    <strong>Достижения:</strong> Чемпион мира 2022, 4×Лига Чемпионов, 8×Золотой мяч
+                </div>
+            </div>
+
+            <div class="player">
+                <div class="player-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cristiano_Ronaldo_2018.jpg/150px-Cristiano_Ronaldo_2018.jpg" alt="Криштиану Роналду">
+                    <div class="player-info">
+                        <h3>Криштиану Роналду <span class="era-badge modern">Современность</span></h3>
+                        <p>Португалия | Нападающий</p>
+                        <p>2002-н.в.</p>
+                    </div>
+                </div>
+                <p>Лучший бомбардир в истории сборных и Лиги Чемпионов.</p>
+                <div class="player-stats">
+                    <strong>Статистика:</strong> 850+ голов, 5×Золотой мяч
+                </div>
+                <div class="achievements">
+                    <strong>Достижения:</strong> Чемпион Европы 2016, 5×Лига Чемпионов
+                </div>
+            </div>
+
+            <div class="player">
+                <div class="player-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=edf4c2f30a71758661709cab8839583c1fd4286f-5249054-images-thumbs&n=13" alt="Зинедин Зидан">
+                    <div class="player-info">
+                        <h3>Зинедин Зидан <span class="era-badge modern">Современность</span></h3>
+                        <p>Франция | Полузащитник</p>
+                        <p>1989-2006</p>
+                    </div>
+                </div>
+                <p>Обладатель уникальной техники и "волшебного" контроля мяча.</p>
+                <div class="player-stats">
+                    <strong>Статистика:</strong> 156 голов за карьеру
+                </div>
+                <div class="achievements">
+                    <strong>Достижения:</strong> Чемпион мира 1998, Золотой мяч 1998
+                </div>
+            </div>
+
+            <div class="player">
+                <div class="player-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=1ae72c00e47bba73c2e049a7be10aa86b7a774d8-5171568-images-thumbs&n=13" alt="Роналдо Назарио">
+                    <div class="player-info">
+                        <h3>Роналдо Назарио <span class="era-badge modern">Современность</span></h3>
+                        <p>Бразилия | Нападающий</p>
+                        <p>1993-2011</p>
+                    </div>
+                </div>
+                <p>"Феномен" - самый техничный нападающий своего поколения.</p>
+                <div class="player-stats">
+                    <strong>Статистика:</strong> 414 голов за карьеру
+                </div>
+                <div class="achievements">
+                    <strong>Достижения:</strong> 2×Чемпион мира, 3×Футболист года ФИФА
+                </div>
+            </div>
+
+            <!-- Текущие звезды -->
+            <div class="player">
+                <div class="player-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=2a0000019ac754f6a0b0e8d9a215cf92b640-1221703-fast-images&n=13" alt="Килиан Мбаппе">
+                    <div class="player-info">
+                        <h3>Килиан Мбаппе <span class="era-badge current">Текущий</span></h3>
+                        <p>Франция | Нападающий</p>
+                        <p>2015-н.в.</p>
+                    </div>
+                </div>
+                <p>Самый перспективный молодой игрок современности.</p>
+                <div class="player-stats">
+                    <strong>Статистика:</strong> 250+ голов до 25 лет
+                </div>
+                <div class="achievements">
+                    <strong>Достижения:</strong> Чемпион мира 2018, 5×Чемпион Франции
+                </div>
+            </div>
+
+            <div class="player">
+                <div class="player-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=fe554674ced19b1aebd4a1c6d72d45fc7867e5f4-12495262-images-thumbs&n=13" alt="Эрлинг Холанн">
+                    <div class="player-info">
+                        <h3>Эрлинг Холанн <span class="era-badge current">Текущий</span></h3>
+                        <p>Норвегия | Нападающий</p>
+                        <p>2016-н.в.</p>
+                    </div>
+                </div>
+                <p>Голевая машина с невероятной физической мощью.</p>
+                <div class="player-stats">
+                    <strong>Статистика:</strong> 200+ голов до 23 лет
+                </div>
+                <div class="achievements">
+                    <strong>Достижения:</strong> Требл с Ман Сити, Золотая бутса
+                </div>
+            </div>
+
+            <div class="player">
+                <div class="player-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=f8c2c18ba14be07647ad028179673db38a33e668-8339915-images-thumbs&n=13" alt="Кевин Де Брёйне">
+                    <div class="player-info">
+                        <h3>Кевин Де Брёйне <span class="era-badge current">Текущий</span></h3>
+                        <p>Бельгия | Полузащитник</p>
+                        <p>2008-н.в.</p>
+                    </div>
+                </div>
+                <p>Лучший ассистент и плеймейкер современности.</p>
+                <div class="player-stats">
+                    <strong>Статистика:</strong> 150+ голов, 250+ ассистов
+                </div>
+                <div class="achievements">
+                    <strong>Достижения:</strong> Требл с Ман Сити, 5×Чемпион Англии
+                </div>
+            </div>
+
+            <div class="player">
+                <div class="player-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=77fa54e80248cd95716181db87572d25a1217f63-4902918-images-thumbs&n=13" alt="Лука Модрич">
+                    <div class="player-info">
+                        <h3>Лука Модрич <span class="era-badge current">Текущий</span></h3>
+                        <p>Хорватия | Полузащитник</p>
+                        <p>2003-н.в.</p>
+                    </div>
+                </div>
+                <p>Мастер контроля темпа и организации игры.</p>
+                <div class="player-stats">
+                    <strong>Статистика:</strong> 100+ голов, 150+ ассистов
+                </div>
+                <div class="achievements">
+                    <strong>Достижения:</strong> Золотой мяч 2018, 5×Лига Чемпионов
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Мир Футбола. Все права защищены.</p>
+    </div>
+</body>
+</html>

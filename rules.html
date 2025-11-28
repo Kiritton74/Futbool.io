@@ -1,0 +1,518 @@
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правила футбола</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; background: #f5f5f5; }
+        .header { background: #006400; color: white; padding: 1rem; text-align: center; }
+        .nav { background: #333; display: flex; justify-content: center; flex-wrap: wrap; }
+        .nav a { color: white; padding: 1rem; text-decoration: none; }
+        .nav a:hover { background: #555; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .footer { background: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+        
+        .rules-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .category {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-top: 4px solid #006400;
+        }
+        
+        .category h3 {
+            color: #006400;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .category h3::before {
+            content: '⚽';
+            margin-right: 0.5rem;
+        }
+        
+        .rule-item {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 3px solid #006400;
+        }
+        
+        .rule-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .field-diagram {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .field {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background: #27ae60;
+            border: 2px solid white;
+            margin: 1rem auto;
+            position: relative;
+            border-radius: 5px;
+        }
+        
+        .field-line {
+            position: absolute;
+            background: white;
+        }
+        
+        .center-line { 
+            width: 2px; 
+            height: 100%; 
+            left: 50%; 
+            transform: translateX(-50%); 
+        }
+        
+        .center-circle { 
+            width: 150px; 
+            height: 150px; 
+            border: 2px solid white; 
+            border-radius: 50%; 
+            left: 50%; 
+            top: 50%; 
+            transform: translate(-50%, -50%); 
+        }
+        
+        .penalty-area { 
+            width: 132px; 
+            height: 80px; 
+            border: 2px solid white; 
+            top: 0; 
+        }
+        
+        .left-penalty { left: 0; }
+        .right-penalty { right: 0; }
+        
+        .goal-area { 
+            width: 60px; 
+            height: 40px; 
+            border: 2px solid white; 
+            top: 20px; 
+        }
+        
+        .left-goal { left: 0; }
+        .right-goal { right: 0; }
+        
+        .goal { 
+            width: 4px; 
+            height: 24px; 
+            background: white; 
+            top: 38px; 
+        }
+        
+        .left-goal-post { left: 0; }
+        .right-goal-post { right: 0; }
+        
+        .referee-signals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .signal {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .signal-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .fouls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .foul-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .foul-penalty {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: #e74c3c;
+            color: white;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+        
+        .yellow { background: #f39c12; }
+        .red { background: #e74c3c; }
+        .free-kick { background: #3498db; }
+        
+        .var-section {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .var-process {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        
+        .process-step {
+            flex: 1;
+            padding: 1rem;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: bold;
+        }
+        
+        .equipment-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .equipment-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .equipment-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .quiz-question {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .rule-highlight {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .var-process, .field { flex-direction: column; }
+            .field { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Правила Футбола</h1>
+    </div>
+    
+    <div class="nav">
+        <a href="index.html">Главная</a>
+        <a href="history.html">История</a>
+        <a href="rules.html">Правила</a>
+        <a href="teams.html">Команды</a>
+        <a href="players.html">Игроки</a>
+    </div>
+
+    <div class="container">
+        <h2>Полное руководство по футбольным правилам</h2>
+        <p>Изучите все аспекты самой популярной игры в мире - от базовых принципов до тонкостей современных правил.</p>
+        
+        <div class="rules-categories">
+            <div class="category">
+                <h3>Основные правила</h3>
+                <div class="rule-item">
+                    <div class="rule-title">Продолжительность игры</div>
+                    <p>2 тайма по 45 минут + добавленное время. При ничьей в кубках - дополнительное время (2×15 мин) и пенальти.</p>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-title">Состав команды</div>
+                    <p>11 игроков (10 полевых + вратарь). Минимум 7 игроков для продолжения матча. До 5 замен за матч.</p>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-title">Экипировка</div>
+                    <p>Футболка, трусы, гетры, щитки, бутсы. Вратари должны отличаться по цвету формы.</p>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h3>Гол и офсайд</h3>
+                <div class="rule-item">
+                    <div class="rule-title">Засчитанный гол</div>
+                    <p>Мяч полностью пересекает линию ворот между штангами и под перекладиной.</p>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-title">Положение "вне игры"</div>
+                    <p>Игрок находится ближе к линии ворот соперника, чем мяч и предпоследний игрок защиты.</p>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-title">Активная игра</div>
+                    <p>Офсайд фиксируется только если игрок участвует в атаке (получает пас или мешает вратарю).</p>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h3>Нарушения и наказания</h3>
+                <div class="rule-item">
+                    <div class="rule-title">Штрафной удар</div>
+                    <p>Назначается за нарушения: подкат сзади, игра рукой, толчки, опасная игра.</p>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-title">Пенальти</div>
+                    <p>Назначается за нарушение в своей штрафной площади. Удар с 11-метровой отметки.</p>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-title">Предупреждения</div>
+                    <p>Желтая карточка - предупреждение. Две желтые = красная. Красная - удаление до конца матча.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="field-diagram">
+            <h3>⚽ Схема футбольного поля</h3>
+            <div class="field">
+                <div class="field-line center-line"></div>
+                <div class="field-line center-circle"></div>
+                <div class="field-line penalty-area left-penalty"></div>
+                <div class="field-line penalty-area right-penalty"></div>
+                <div class="field-line goal-area left-goal"></div>
+                <div class="field-line goal-area right-goal"></div>
+                <div class="field-line goal left-goal-post"></div>
+                <div class="field-line goal right-goal-post"></div>
+            </div>
+            <p><strong>Размеры:</strong> Длина 90-120м × Ширина 45-90м | Штрафная площадь: 40.3м × 16.5м</p>
+        </div>
+
+        <div class="rule-highlight">
+            <h4>📢 Важное обновление правил 2023</h4>
+            <p>Увеличение добавленного времени за замены, затягивание времени, лечение травм. Более строгое наказание за неспортивное поведение.</p>
+        </div>
+
+        <h3>🚩 Сигналы арбитров</h3>
+        <div class="referee-signals">
+            <div class="signal">
+                <div class="signal-icon">🟨</div>
+                <h4>Желтая карточка</h4>
+                <p>Предупреждение за неспортивное поведение, систематические нарушения</p>
+            </div>
+            <div class="signal">
+                <div class="signal-icon">🟥</div>
+                <h4>Красная карточка</h4>
+                <p>Удаление за грубую игру, агрессию, умышленную игру рукой</p>
+            </div>
+            <div class="signal">
+                <div class="signal-icon">👆</div>
+                <h4>Свободный удар</h4>
+                <p>Рука указывает направление атаки после нарушения</p>
+            </div>
+            <div class="signal">
+                <div class="signal-icon">👇</div>
+                <h4>Пенальти</h4>
+                <p>Резкое указание на 11-метровую отметку</p>
+            </div>
+            <div class="signal">
+                <div class="signal-icon">🔄</div>
+                <h4>Играйте!</h4>
+                <p>Вращающие движения руками - преимущество</p>
+            </div>
+            <div class="signal">
+                <div class="signal-icon">⏱️</div>
+                <h4>Добавленное время</h4>
+                <p>Поднятая рука с пальцами - минуты добавленного времени</p>
+            </div>
+        </div>
+
+        <h3>⚖️ Виды нарушений и наказаний</h3>
+        <div class="fouls-grid">
+            <div class="foul-card">
+                <h4>Легкие нарушения <span class="foul-penalty free-kick">Штрафной</span></h4>
+                <ul>
+                    <li>Неопасный подкат</li>
+                    <li>Неумышленная рука</li>
+                    <li>Незначительный толчок</li>
+                    <li>Затягивание времени</li>
+                </ul>
+            </div>
+            
+            <div class="foul-card">
+                <h4>Серьезные нарушения <span class="foul-penalty yellow">Желтая</span></h4>
+                <ul>
+                    <li>Грубая игра</li>
+                    <li>Симуляция</li>
+                    <li>Протесты</li>
+                    <li>Систематические фолы</li>
+                    <li>Выход/вход без разрешения</li>
+                </ul>
+            </div>
+            
+            <div class="foul-card">
+                <h4>Дисквалифицирующие <span class="foul-penalty red">Красная</span></h4>
+                <ul>
+                    <li>Очень грубая игра</li>
+                    <li>Агрессивное поведение</li>
+                    <li>Плевок в соперника</li>
+                    <li>Умышленная рука, лишившая гола</li>
+                    <li>Оскорбительные выражения</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="var-section">
+            <h3>📺 Система VAR (Video Assistant Referee)</h3>
+            <p>Технология видеоповторов, используемая с 2018 года для проверки ключевых моментов.</p>
+            
+            <div class="var-process">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h5>Обнаружение</h5>
+                    <p>VAR автоматически проверяет все ситуации</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h5>Анализ</h5>
+                    <p>Просмотр повторов с разных углов</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h5>Рекомендация</h5>
+                    <p>Совет главному арбитру</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h5>Просмотр</h5>
+                    <p>Арбитр смотрит повтор на мониторе</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h5>Решение</h5>
+                    <p>Окончательное решение на поле</p>
+                </div>
+            </div>
+            
+            <div class="rule-highlight" style="background: rgba(255,255,255,0.1); border-left-color: #3498db;">
+                <h4>Ситуации для проверки VAR:</h4>
+                <p>Голы • Пенальти • Прямые красные карточки • Ошибка в личности игрока</p>
+            </div>
+        </div>
+
+        <h3>🎽 Обязательная экипировка</h3>
+        <div class="equipment-showcase">
+            <div class="equipment-item">
+                <div class="equipment-icon">👕</div>
+                <h4>Форма</h4>
+                <p>Футболка, трусы, гетры. Номера 1-99</p>
+            </div>
+            <div class="equipment-item">
+                <div class="equipment-icon">👞</div>
+                <h4>Обувь</h4>
+                <p>Бутсы с шипами. Запрещены металлические элементы</p>
+            </div>
+            <div class="equipment-item">
+                <div class="equipment-icon">🛡️</div>
+                <h4>Защита</h4>
+                <p>Щитки обязательны. Перчатки для вратарей</p>
+            </div>
+            <div class="equipment-item">
+                <div class="equipment-icon">📿</div>
+                <h4>Аксессуары</h4>
+                <p>Разрешенны повязки капитана. Запрещены украшения</p>
+            </div>
+            <div class="equipment-item">
+                <div class="equipment-icon">⚽</div>
+                <h4>Мяч</h4>
+                <p>Окружность 68-70 см. Вес 410-450 г. Давление 0.6-1.1 атм</p>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3>🧠 Проверь знания правил</h3>
+            
+            <div class="quiz-question">
+                <p><strong>Вопрос 1:</strong> Игрок в офсайде получает пас, но не касается мяча. Что делает арбитр?</p>
+                <p><em>Ответ: Игра продолжается, так как игрок не участвовал в активной фазе атаки.</em></p>
+            </div>
+            
+            <div class="quiz-question">
+                <p><strong>Вопрос 2:</strong> Вратарь за пределами штрафной площади играет рукой. Какое наказание?</p>
+                <p><em>Ответ: Свободный удар + желтая карточка (красная если лишил явного гола).</em></p>
+            </div>
+            
+            <div class="quiz-question">
+                <p><strong>Вопрос 3:</strong> Мяч отскакивает от арбитра и залетает в ворота. Засчитают гол?</p>
+                <p><em>Ответ: Да, если арбитр случайно коснулся мяча и не было нарушения.</em></p>
+            </div>
+            
+            <div class="quiz-question">
+                <p><strong>Вопрос 4:</strong> Игрок делает замену без разрешения арбитра. Что последует?</p>
+                <p><em>Ответ: Желтая карточка, игра возобновляется свободным ударом.</em></p>
+            </div>
+        </div>
+
+        <div class="rule-highlight">
+            <h4>💡 Профессиональные советы</h4>
+            <p>Всегда играйте до свистка • Уважайте решения арбитра • Не спорьте с помощниками • Помните - футбол это игра, а судьи тоже люди</p>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Мир Футбола. Все права защищены.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,805 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Футбольные команды</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; background: #f5f5f5; }
+        .header { background: #006400; color: white; padding: 1rem; text-align: center; }
+        .nav { background: #333; display: flex; justify-content: center; flex-wrap: wrap; }
+        .nav a { color: white; padding: 1rem; text-decoration: none; }
+        .nav a:hover { background: #555; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .footer { background: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+        
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .team {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid #006400;
+        }
+        
+        .team:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .team-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .team img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-right: 1rem;
+            padding: 5px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .team-info h3 {
+            margin: 0;
+            color: #006400;
+            font-size: 1.3rem;
+        }
+        
+        .team-info p {
+            margin: 0.3rem 0;
+            color: #666;
+        }
+        
+        .league-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+        }
+        
+        .premier-league { background: #38003c; }
+        .la-liga { background: #ff2e00; }
+        .serie-a { background: #0046a4; }
+        .bundesliga { background: #d3010c; }
+        .ligue-1 { background: #091c3b; }
+        .other { background: #666; }
+        
+        .team-stats {
+            background: #f0f8f0;
+            padding: 0.8rem;
+            border-radius: 5px;
+            margin: 0.8rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .trophies {
+            background: #e8f4e8;
+            padding: 0.8rem;
+            border-radius: 5px;
+            margin-top: 0.8rem;
+        }
+        
+        .trophy-count {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+        
+        .trophy-item {
+            flex: 1;
+        }
+        
+        .trophy-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #006400;
+        }
+        
+        .trophy-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .famous-players {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+        }
+        
+        .players-list {
+            color: #555;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Футбольные Команды</h1>
+    </div>
+    
+    <div class="nav">
+        <a href="index.html">Главная</a>
+        <a href="history.html">История</a>
+        <a href="rules.html">Правила</a>
+        <a href="teams.html">Команды</a>
+        <a href="players.html">Игроки</a>
+    </div>
+
+    <div class="container">
+        <h2>Великие футбольные клубы мира</h2>
+        <p>От легендарных европейских грандов до исторических клубов - знакомьтесь с самыми титулованными командами!</p>
+        
+        <div class="teams-grid">
+            
+            <!-- Испанские клубы -->
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=8832d746947baf2e6f186644851988d7cd52fa6a-12621368-images-thumbs&n=13" alt="Реал Мадрид">
+                    <div class="team-info">
+                        <h3>Реал Мадрид</h3>
+                        <p>Мадрид, Испания</p>
+                        <p>Основан: 1902</p>
+                        <span class="league-badge la-liga">La Liga</span>
+                    </div>
+                </div>
+                <p>Самый титулованный клуб в истории футбола, "Королевский клуб".</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Сантьяго Бернабеу</div>
+                    <div><strong>Вместимость:</strong> 81,044</div>
+                    <div><strong>Прозвище:</strong> Los Blancos</div>
+                    <div><strong>Цвета:</strong> Белый</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">14</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">35</div>
+                            <div class="trophy-label">Ла Лига</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">5</div>
+                            <div class="trophy-label">КЧ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Ди Стефано, Роналдо, Зидан, Рамос</span>
+                </div>
+            </div>
+
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=9a09b3d0f02003a63f47d5f1247417060b84195a-10703717-images-thumbs&n=13" alt="Барселона">
+                    <div class="team-info">
+                        <h3>Барселона</h3>
+                        <p>Барселона, Испания</p>
+                        <p>Основан: 1899</p>
+                        <span class="league-badge la-liga">La Liga</span>
+                    </div>
+                </div>
+                <p>Клуб с каталонской идентичностью, известный академией "Ла Масия".</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Камп Ноу</div>
+                    <div><strong>Вместимость:</strong> 99,354</div>
+                    <div><strong>Прозвище:</strong> Blaugrana</div>
+                    <div><strong>Цвета:</strong> Сине-гранатовые</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">5</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">27</div>
+                            <div class="trophy-label">Ла Лига</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">4</div>
+                            <div class="trophy-label">КЧ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Кройф, Месси, Хави, Иньеста</span>
+                </div>
+            </div>
+
+            <!-- Английские клубы -->
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/ru/thumb/7/7a/Manchester_United_FC_crest.svg/150px-Manchester_United_FC_crest.svg.png" alt="Манчестер Юнайтед">
+                    <div class="team-info">
+                        <h3>Манчестер Юнайтед</h3>
+                        <p>Манчестер, Англия</p>
+                        <p>Основан: 1878</p>
+                        <span class="league-badge premier-league">Premier League</span>
+                    </div>
+                </div>
+                <p>"Красные дьяволы" - самый популярный клуб Англии.</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Олд Траффорд</div>
+                    <div><strong>Вместимость:</strong> 74,140</div>
+                    <div><strong>Прозвище:</strong> Red Devils</div>
+                    <div><strong>Цвета:</strong> Красный</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">3</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">20</div>
+                            <div class="trophy-label">АПЛ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">1</div>
+                            <div class="trophy-label">КЛ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Чарльтон, Кантона, Джигс, Роналду</span>
+                </div>
+            </div>
+
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=c299dfd0fad8d3ea6f166bfe3e4e22a4aab0251e-8314096-images-thumbs&n=13" alt="Ливерпуль">
+                    <div class="team-info">
+                        <h3>Ливерпуль</h3>
+                        <p>Ливерпуль, Англия</p>
+                        <p>Основан: 1892</p>
+                        <span class="league-badge premier-league">Premier League</span>
+                    </div>
+                </div>
+                <p>Клуб с богатой европейской историей и знаменитой песней "You'll Never Walk Alone".</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Энфилд</div>
+                    <div><strong>Вместимость:</strong> 53,394</div>
+                    <div><strong>Прозвище:</strong> The Reds</div>
+                    <div><strong>Цвета:</strong> Красный</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">6</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">19</div>
+                            <div class="trophy-label">АПЛ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">1</div>
+                            <div class="trophy-label">КЛ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Далглиш, Джерард, Салах, Ван Дейк</span>
+                </div>
+            </div>
+
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=0aef3b2ef8bdef2183757fd3c8bf8d02dd7300e0-4477717-images-thumbs&n=13" alt="Арсенал">
+                    <div class="team-info">
+                        <h3>Арсенал</h3>
+                        <p>Лондон, Англия</p>
+                        <p>Основан: 1886</p>
+                        <span class="league-badge premier-league">Premier League</span>
+                    </div>
+                </div>
+                <p>"Пушкари" - клуб с непобежденным сезоном в АПЛ (2003/04).</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Эмирейтс</div>
+                    <div><strong>Вместимость:</strong> 60,260</div>
+                    <div><strong>Прозвище:</strong> The Gunners</div>
+                    <div><strong>Цвета:</strong> Красный-белый</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">0</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">13</div>
+                            <div class="trophy-label">АПЛ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">14</div>
+                            <div class="trophy-label">КА</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Генри, Бергкамп, Адамс, Виейра</span>
+                </div>
+            </div>
+
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=781718d7c05bc05f01092fc4048b6173671a5ef5-4828133-images-thumbs&n=13" alt="Манчестер Сити">
+                    <div class="team-info">
+                        <h3>Манчестер Сити</h3>
+                        <p>Манчестер, Англия</p>
+                        <p>Основан: 1880</p>
+                        <span class="league-badge premier-league">Premier League</span>
+                    </div>
+                </div>
+                <p>Современная футбольная сила с передовой тактикой Пеп Гвардиолы.</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Этихад</div>
+                    <div><strong>Вместимость:</strong> 53,400</div>
+                    <div><strong>Прозвище:</strong> Cityzens</div>
+                    <div><strong>Цвета:</strong> Небесно-голубой</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">1</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">9</div>
+                            <div class="trophy-label">АПЛ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">1</div>
+                            <div class="trophy-label">Требл</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Агуэро, Де Брёйне, Холанн, Сильва</span>
+                </div>
+            </div>
+
+            <!-- Итальянские клубы -->
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/FC_Internazionale_Milano_2021.svg/150px-FC_Internazionale_Milano_2021.svg.png" alt="Интер">
+                    <div class="team-info">
+                        <h3>Интернационале</h3>
+                        <p>Милан, Италия</p>
+                        <p>Основан: 1908</p>
+                        <span class="league-badge serie-a">Serie A</span>
+                    </div>
+                </div>
+                <p>"Нерадзурри" - клуб, всегда открытый для иностранных игроков.</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Джузеппе Меацца</div>
+                    <div><strong>Вместимость:</strong> 75,817</div>
+                    <div><strong>Прозвище:</strong> Nerazzurri</div>
+                    <div><strong>Цвета:</strong> Сине-черные</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">3</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">19</div>
+                            <div class="trophy-label">Серия А</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">3</div>
+                            <div class="trophy-label">КУЕФА</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Маццола, Меацца, Роналдо, Дзанети</span>
+                </div>
+            </div>
+
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=7ee69b44520a9d2b6a69a2e09bb3b6667f2b9c14-4254939-images-thumbs&n=13" alt="Милан">
+                    <div class="team-info">
+                        <h3>Милан</h3>
+                        <p>Милан, Италия</p>
+                        <p>Основан: 1899</p>
+                        <span class="league-badge serie-a">Serie A</span>
+                    </div>
+                </div>
+                <p>"Россонери" - один из самых успешных клубов в европейских кубках.</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Джузеппе Меацца</div>
+                    <div><strong>Вместимость:</strong> 75,817</div>
+                    <div><strong>Прозвище:</strong> Rossoneri</div>
+                    <div><strong>Цвета:</strong> Красно-черные</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">7</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">19</div>
+                            <div class="trophy-label">Серия А</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">5</div>
+                            <div class="trophy-label">СК</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Мальдини, ван Бастен, Гуллит, Кака</span>
+                </div>
+            </div>
+
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=513fc7ee509bdf907b39b75b94e7edd8c624c2a8-5146554-images-thumbs&n=13" alt="Ювентус">
+                    <div class="team-info">
+                        <h3>Ювентус</h3>
+                        <p>Турин, Италия</p>
+                        <p>Основан: 1897</p>
+                        <span class="league-badge serie-a">Serie A</span>
+                    </div>
+                </div>
+                <p>"Старая Синьора" - самый титулованный клуб Италии.</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Альянц Стадиум</div>
+                    <div><strong>Вместимость:</strong> 41,507</div>
+                    <div><strong>Прозвище:</strong> Bianconeri</div>
+                    <div><strong>Цвета:</strong> Черно-белые</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">2</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">36</div>
+                            <div class="trophy-label">Серия А</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">14</div>
+                            <div class="trophy-label">КИ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Дель Пьеро, Платини, Бониперти, Буффон</span>
+                </div>
+            </div>
+
+            <!-- Немецкие клубы -->
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg/150px-FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg.png" alt="Бавария">
+                    <div class="team-info">
+                        <h3>Бавария Мюнхен</h3>
+                        <p>Мюнхен, Германия</p>
+                        <p>Основан: 1900</p>
+                        <span class="league-badge bundesliga">Bundesliga</span>
+                    </div>
+                </div>
+                <p>Самый успешный немецкий клуб, доминирующий в Бундеслиге.</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Альянц Арена</div>
+                    <div><strong>Вместимость:</strong> 75,000</div>
+                    <div><strong>Прозвище:</strong> FC Hollywood</div>
+                    <div><strong>Цвета:</strong> Красно-белые</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">6</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">32</div>
+                            <div class="trophy-label">Бундеслига</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">2</div>
+                            <div class="trophy-label">КЛ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Беккенбауэр, Мюллер, Румменигге, Лаhm</span>
+                </div>
+            </div>
+
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=db15e7ac69f75b3e8915b5a84de0759eb436b12e-5279204-images-thumbs&n=13" alt="Боруссия Дортмунд">
+                    <div class="team-info">
+                        <h3>Боруссия Дортмунд</h3>
+                        <p>Дортмунд, Германия</p>
+                        <p>Основан: 1909</p>
+                        <span class="league-badge bundesliga">Bundesliga</span>
+                    </div>
+                </div>
+                <p>Клуб с самой большой посещаемостью в мире, "Черно-желтые".</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Сигнал Идуна Парк</div>
+                    <div><strong>Вместимость:</strong> 81,365</div>
+                    <div><strong>Прозвище:</strong> Die Borussen</div>
+                    <div><strong>Цвета:</strong> Черно-желтые</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">1</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">8</div>
+                            <div class="trophy-label">Бундеслига</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">1</div>
+                            <div class="trophy-label">КК</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Заммер, Ройс, Левандовски, Ройтер</span>
+                </div>
+            </div>
+
+            <!-- Французские клубы -->
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=763635d4d00d098109176700d67a4e46b98c8eeb-7992926-images-thumbs&n=13" alt="ПСЖ">
+                    <div class="team-info">
+                        <h3>Пари Сен-Жермен</h3>
+                        <p>Париж, Франция</p>
+                        <p>Основан: 1970</p>
+                        <span class="league-badge ligue-1">Ligue 1</span>
+                    </div>
+                </div>
+                <p>Самый успешный французский клуб современности.</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Парк де Пренс</div>
+                    <div><strong>Вместимость:</strong> 47,929</div>
+                    <div><strong>Прозвище:</strong> PSG</div>
+                    <div><strong>Цвета:</strong> Сине-красные</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">0</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">11</div>
+                            <div class="trophy-label">Лига 1</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">1</div>
+                            <div class="trophy-label">КК</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Мбаппе, Ибрагимович, Райнья, Почеттино</span>
+                </div>
+            </div>
+
+            <!-- Другие известные клубы -->
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=84497a2e0f09aca7f2e29007f18b6223f99c11b7-5232914-images-thumbs&n=13" alt="Аякс">
+                    <div class="team-info">
+                        <h3>Аякс</h3>
+                        <p>Амстердам, Нидерланды</p>
+                        <p>Основан: 1900</p>
+                        <span class="league-badge other">Eredivisie</span>
+                    </div>
+                </div>
+                <p>Родоначальник "тотального футбола", известный своей академией.</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Йохан Кройф Арена</div>
+                    <div><strong>Вместимость:</strong> 55,865</div>
+                    <div><strong>Прозвище:</strong> Godenzonen</div>
+                    <div><strong>Цвета:</strong> Бело-красные</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">4</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">36</div>
+                            <div class="trophy-label">Эредивизи</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">1</div>
+                            <div class="trophy-label">КК</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Кройф, Бергкамп, ван Бастен, Снейдер</span>
+                </div>
+            </div>
+
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=722b66b4867c2d255e53277c48c5d8ce89c00758-4336923-images-thumbs&n=13" alt="Порту">
+                    <div class="team-info">
+                        <h3>Порту</h3>
+                        <p>Порту, Португалия</p>
+                        <p>Основан: 1893</p>
+                        <span class="league-badge other">Primeira Liga</span>
+                    </div>
+                </div>
+                <p>"Драконы" - один из самых успешных португальских клубов.</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Драгау</div>
+                    <div><strong>Вместимость:</strong> 50,033</div>
+                    <div><strong>Прозвище:</strong> Dragões</div>
+                    <div><strong>Цвета:</strong> Сине-белые</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">2</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">30</div>
+                            <div class="trophy-label">Лига Порту</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">2</div>
+                            <div class="trophy-label">ЛЕ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Моуринью, Деку, Карвалью, Коста</span>
+                </div>
+            </div>
+
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=db4f4fa25e0e73d0be0289a086b71037a297c10b-13529499-images-thumbs&n=13" alt="Челси">
+                    <div class="team-info">
+                        <h3>Челси</h3>
+                        <p>Лондон, Англия</p>
+                        <p>Основан: 1905</p>
+                        <span class="league-badge premier-league">Premier League</span>
+                    </div>
+                </div>
+                <p>"Синие" - клуб, изменивший английский футбол в 2000-х.</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Стэмфорд Бридж</div>
+                    <div><strong>Вместимость:</strong> 40,341</div>
+                    <div><strong>Прозвище:</strong> The Blues</div>
+                    <div><strong>Цвета:</strong> Синий</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">2</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">6</div>
+                            <div class="trophy-label">АПЛ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">2</div>
+                            <div class="trophy-label">ЛЕ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Лэмпард, Терри, Дрогба, Сеск</span>
+                </div>
+            </div>
+
+            <div class="team">
+                <div class="team-header">
+                    <img src="https://avatars.mds.yandex.net/i?id=47b8a97a771ddc86d524ed3808c0a10b5f1bf621-5394680-images-thumbs&n=13" alt="Атлетико Мадрид">
+                    <div class="team-info">
+                        <h3>Атлетико Мадрид</h3>
+                        <p>Мадрид, Испания</p>
+                        <p>Основан: 1903</p>
+                        <span class="league-badge la-liga">La Liga</span>
+                    </div>
+                </div>
+                <p>"Матрасники" - клуб с сильным характером и оборонительной тактикой.</p>
+                <div class="team-stats">
+                    <div><strong>Стадион:</strong> Ванда Метрополитано</div>
+                    <div><strong>Вместимость:</strong> 68,456</div>
+                    <div><strong>Прозвище:</strong> Colchoneros</div>
+                    <div><strong>Цвета:</strong> Красно-белые</div>
+                </div>
+                <div class="trophies">
+                    <strong>Основные трофеи:</strong>
+                    <div class="trophy-count">
+                        <div class="trophy-item">
+                            <div class="trophy-number">0</div>
+                            <div class="trophy-label">ЛЧ</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">11</div>
+                            <div class="trophy-label">Ла Лига</div>
+                        </div>
+                        <div class="trophy-item">
+                            <div class="trophy-number">3</div>
+                            <div class="trophy-label">ЛЕ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="famous-players">
+                    <strong>Легенды:</strong> 
+                    <span class="players-list">Гризманн, Торрес, Годен, Симеоне</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Мир Футбола. Все права защищены.</p>
+    </div>
+</body>
+</html>

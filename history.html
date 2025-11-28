@@ -1,0 +1,367 @@
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История футбола</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; background: #f5f5f5; }
+        .header { background: #006400; color: white; padding: 1rem; text-align: center; }
+        .nav { background: #333; display: flex; justify-content: center; flex-wrap: wrap; }
+        .nav a { color: white; padding: 1rem; text-decoration: none; }
+        .nav a:hover { background: #555; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .footer { background: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+        
+        .timeline { margin: 3rem 0; position: relative; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: #006400;
+        }
+        
+        .era { margin: 2rem 0; }
+        .era-title {
+            background: #006400;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 5px;
+            margin: 2rem 0;
+            font-size: 1.3rem;
+        }
+        
+        .event {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            width: 45%;
+        }
+        
+        .event:nth-child(odd) {
+            margin-left: 0;
+            margin-right: auto;
+        }
+        
+        .event:nth-child(even) {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        
+        .event::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: #006400;
+            border-radius: 50%;
+        }
+        
+        .event:nth-child(odd)::before {
+            right: -10px;
+        }
+        
+        .event:nth-child(even)::before {
+            left: -10px;
+        }
+        
+        .event-year {
+            background: #ff6b6b;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .fact-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 4px solid #006400;
+        }
+        
+        .evolution {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .evolution-stages {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        
+        .stage {
+            flex: 1;
+            padding: 1rem;
+        }
+        
+        .stage-number {
+            width: 40px;
+            height: 40px;
+            background: #006400;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: bold;
+        }
+        
+        .museum {
+            background: linear-gradient(135deg, #006400, #008000);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .museum-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .museum-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .quote {
+            font-style: italic;
+            background: #f0f8f0;
+            padding: 1.5rem;
+            border-left: 4px solid #006400;
+            margin: 1.5rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .event { width: calc(100% - 40px); margin-left: 40px !important; }
+            .event::before { left: -10px !important; right: auto !important; }
+            .evolution-stages { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>История Футбола</h1>
+    </div>
+    
+    <div class="nav">
+        <a href="index.html">Главная</a>
+        <a href="history.html">История</a>
+        <a href="rules.html">Правила</a>
+        <a href="teams.html">Команды</a>
+        <a href="players.html">Игроки</a>
+    </div>
+
+    <div class="container">
+        <h2>Эволюция великой игры</h2>
+        <p>От древних ритуалов до современного спорта - путь футбола длиной в тысячи лет.</p>
+        
+        <div class="era-title">Древние истоки</div>
+        
+        <div class="facts-grid">
+            <div class="fact-card">
+                <h3>⚽ Древний Китай</h3>
+                <p>Игра "Цуцзюй" существовала уже в III веке до н.э. и использовалась для тренировки солдат.</p>
+            </div>
+            <div class="fact-card">
+                <h3>🏛 Древняя Греция</h3>
+                <p>"Эпискирос" - игра с мячом, в которую играли спартанцы. Мяч изготавливали из бычьего пузыря.</p>
+            </div>
+            <div class="fact-card">
+                <h3>🛡 Древний Рим</h3>
+                <p>"Харпастум" - римская военная игра, где две команды боролись за мяч на прямоугольном поле.</p>
+            </div>
+        </div>
+
+        <div class="era-title">Хронология развития</div>
+        
+        <div class="timeline">
+            <div class="event">
+                <span class="event-year">1863</span>
+                <h3>Рождение современного футбола</h3>
+                <p>В лондонской таверне "Вольные каменщики" основана Футбольная ассоциация Англии. Приняты первые единые правила, запретившие играть руками.</p>
+            </div>
+            
+            <div class="event">
+                <span class="event-year">1872</span>
+                <h3>Первый международный матч</h3>
+                <p>Шотландия - Англия 0:0. Этот матч положил начало международным футбольным встречам.</p>
+            </div>
+            
+            <div class="event">
+                <span class="event-year">1888</span>
+                <h3>Первая футбольная лига</h3>
+                <p>Основана Футбольная лига Англии - первая в мире профессиональная футбольная лига.</p>
+            </div>
+            
+            <div class="event">
+                <span class="event-year">1904</span>
+                <h3>Создание ФИФА</h3>
+                <p>В Париже основана Международная федерация футбола (FIFA) с участием 7 стран.</p>
+            </div>
+            
+            <div class="event">
+                <span class="event-year">1930</span>
+                <h3>Первый чемпионат мира</h3>
+                <p>Уругвай принимает первый чемпионат мира и становится его первым победителем.</p>
+            </div>
+            
+            <div class="event">
+                <span class="event-year">1954</span>
+                <h3>Основание УЕФА</h3>
+                <p>Создан Союз европейских футбольных ассоциаций, начавший организацию европейских клубных турниров.</p>
+            </div>
+            
+            <div class="event">
+                <span class="event-year">1992</span>
+                <h3>Рождение Премьер-лиги</h3>
+                <p>Английские клубы создают Премьер-лигу, что приводит к коммерциализации футбола.</p>
+            </div>
+            
+            <div class="event">
+                <span class="event-year">VAR - 2018</span>
+                <h3>Технологии в футболе</h3>
+                <p>Система видеопомощи арбитрам (VAR) впервые используется на чемпионате мира в России.</p>
+            </div>
+        </div>
+
+        <div class="era-title">Эволюция тактики</div>
+        
+        <div class="evolution">
+            <h3>От пирамиды до ложной девятки</h3>
+            <div class="evolution-stages">
+                <div class="stage">
+                    <div class="stage-number">1</div>
+                    <h4>2-3-5 Пирамида</h4>
+                    <p>1880-1925</p>
+                    <p>Классическое построение с 5 нападающими</p>
+                </div>
+                <div class="stage">
+                    <div class="stage-number">2</div>
+                    <h4>WM</h4>
+                    <p>1925-1950</p>
+                    <p>Арсенал Чапмана, революция в тактике</p>
+                </div>
+                <div class="stage">
+                    <div class="stage-number">3</div>
+                    <h4>4-2-4</h4>
+                    <p>1950-1960</p>
+                    <p>Бразильская схема, два чистых центрфорварда</p>
+                </div>
+                <div class="stage">
+                    <div class="stage-number">4</div>
+                    <h4>Тотальный футбол</h4>
+                    <p>1970-е</p>
+                    <p>Голландская школа, взаимозаменяемость</p>
+                </div>
+                <div class="stage">
+                    <div class="stage-number">5</div>
+                    <h4>Тики-така</h4>
+                    <p>2000-е</p>
+                    <p>Испанский стиль, контроль через пас</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="era-title">Футбольный музей рекордов</div>
+        
+        <div class="museum">
+            <h3>⚡ Легендарные достижения</h3>
+            <div class="museum-items">
+                <div class="museum-item">
+                    <h4>🏆 Самые титулованные</h4>
+                    <p>Лионель Месси - 8 "Золотых мячей"</p>
+                </div>
+                <div class="museum-item">
+                    <h4>⚽ Лучший бомбардир</h4>
+                    <p>Криштиану Роналду - 850+ голов</p>
+                </div>
+                <div class="museum-item">
+                    <h4>👑 Чемпионы мира</h4>
+                    <p>Бразилия - 5 побед</p>
+                </div>
+                <div class="museum-item">
+                    <h4>🏟 Самый большой стадион</h4>
+                    <p>Стадион Первого мая (КНДР) - 150,000 мест</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="era-title">Влияние на культуру</div>
+        
+        <div class="facts-grid">
+            <div class="fact-card">
+                <h3>🎬 Кино и футбол</h3>
+                <p>Классические фильмы: "Мяч забит в ворота", "Побег к победу", "Зеленый уличный футбол".</p>
+            </div>
+            <div class="fact-card">
+                <h3>🎵 Музыкальные хиты</h3>
+                <p>"Three Lions" - гимн английских болельщиков, "Waka Waka" Шакиры для ЧМ-2010.</p>
+            </div>
+            <div class="fact-card">
+                <h3>📚 Литература</h3>
+                <p>Футбол в произведениях Камю, Эко, Хорнби. Философия игры и ее социальная роль.</p>
+            </div>
+        </div>
+
+        <div class="quote">
+            "Всё, что я знаю о морали и обязанностях человека, я обязан футболу." 
+            <br>- Альбер Камю, писатель и вратарь
+        </div>
+
+        <div class="era-title">Будущее футбола</div>
+        
+        <div class="facts-grid">
+            <div class="fact-card">
+                <h3>🤖 Технологии</h3>
+                <p>Полуавтоматический офсайд, системы отслеживания игроков, анализ данных в реальном времени.</p>
+            </div>
+            <div class="fact-card">
+                <h3>🌍 Глобализация</h3>
+                <p>Расширение клубных брендов по всему миру, развитие женского футбола.</p>
+            </div>
+            <div class="fact-card">
+                <h3>♿ Доступность</h3>
+                <p>Адаптивный футбол для людей с ограниченными возможностями.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Мир Футбола. Все права защищены.</p>
+    </div>
+</body>
+</html>
